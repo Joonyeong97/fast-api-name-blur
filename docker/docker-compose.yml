@@ -1,0 +1,22 @@
+version: '2.3'
+
+services:
+
+  fast-api:
+    image: docker.io/joon09/fastapi-torch:${tag}
+    container_name: fast-api
+    ports:
+      - "8000:80"
+    environment:
+      - TZ=Asia/Seoul
+    restart: always
+    networks:
+      default:
+    shm_size: "4gb"
+
+networks:
+  default:
+    external:
+      name: fast-api
+
+#  docker network create --gateway 10.5.0.1 --subnet 10.5.0.0/21 --driver bridge fast-api
